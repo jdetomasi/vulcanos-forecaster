@@ -45,7 +45,7 @@ public class GalaxyDataLoader {
             previousForecast = newForecast;
             galaxySimulator.advanceOneDay();
 
-            logger.info(String.format("Day #%d - %s (%f)", day, newForecast.toString(), newForecast.getValue().doubleValue()));
+            logger.debug(String.format("Day #%d - %s (%f)", day, newForecast.toString(), newForecast.getValue().doubleValue()));
         }
 
         return buildSuccessfulResponse(forecastPeriodCount, rainData.getDaysWithMaxRainIntensity());
