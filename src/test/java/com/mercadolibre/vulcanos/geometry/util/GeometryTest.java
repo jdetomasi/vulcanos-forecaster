@@ -82,28 +82,28 @@ public class GeometryTest {
         assertEquals(
                 new Point(BigDecimal.ZERO, BigDecimal.ONE),
                 geometry.roundPointCoordinates(
-                        geometry.getCartesianCoordinates(BigDecimal.valueOf(270), BigDecimal.ONE)));
+                        geometry.getCartesianCoordinates(new BigDecimal(270), BigDecimal.ONE)));
 
         assertEquals(
-                new Point(BigDecimal.valueOf(12), BigDecimal.valueOf(-5)),
+                new Point(new BigDecimal(12), new BigDecimal(-5)),
                 geometry.roundPointCoordinates(
-                        geometry.getCartesianCoordinates(BigDecimal.valueOf(22.6), BigDecimal.valueOf(13))));
+                        geometry.getCartesianCoordinates(new BigDecimal("22.6"), new BigDecimal(13))));
 
         assertEquals(
-                new Point(BigDecimal.valueOf(2.57), BigDecimal.valueOf(-1.55)),
+                new Point(new BigDecimal("2.57"), new BigDecimal("-1.55")),
                 geometry.roundPointCoordinates(
-                        geometry.getCartesianCoordinates(BigDecimal.valueOf(31), BigDecimal.valueOf(3))));
+                        geometry.getCartesianCoordinates(new BigDecimal(31), new BigDecimal(3))));
     }
 
     @Test
     public void testTrianglePerimeter() {
-        Point pointA = new Point(BigDecimal.valueOf(1), BigDecimal.valueOf(0));
-        Point pointB = new Point(BigDecimal.valueOf(1), BigDecimal.valueOf(-3));
-        Point pointC = new Point(BigDecimal.valueOf(3), BigDecimal.valueOf(4));
+        Point pointA = new Point(new BigDecimal(1), new BigDecimal(0));
+        Point pointB = new Point(new BigDecimal(1), new BigDecimal(-3));
+        Point pointC = new Point(new BigDecimal(3), new BigDecimal(4));
 
-        BigDecimal expectedPerimeter = BigDecimal.valueOf(3)
-                .add(BigDecimal.valueOf(Math.sqrt(53)))
-                .add(BigDecimal.valueOf(Math.sqrt(20)));
+        BigDecimal expectedPerimeter = new BigDecimal(3)
+                .add(new BigDecimal(Math.sqrt(53)))
+                .add(new BigDecimal(Math.sqrt(20)));
         BigDecimal calculatedPerimeter = geometry.calculateTrianglePerimeter(pointA, pointB, pointC);
 
         assertEquals(geometry.roundBigDecimal(expectedPerimeter), geometry.roundBigDecimal(calculatedPerimeter));

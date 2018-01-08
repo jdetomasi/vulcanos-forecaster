@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 import java.math.MathContext;
 
 public class Geometry {
-    public static final BigDecimal FULL_ROTATION_DEGREES = BigDecimal.valueOf(360);
+    public static final BigDecimal FULL_ROTATION_DEGREES = new BigDecimal(360);
 
     private final Integer decimalPrecision;
 
@@ -28,14 +28,14 @@ public class Geometry {
 
         BigDecimal m1;
         if (equals(p1.getX(), p2.getX())) {
-            m1 = BigDecimal.valueOf(Double.MAX_VALUE);
+            m1 = new BigDecimal(Double.MAX_VALUE);
         } else {
             m1 = p2.getY().subtract(p1.getY()).divide(p2.getX().subtract(p1.getX()), MathContext.DECIMAL32);
         }
 
         BigDecimal m2;
         if (equals(p2.getX(), p3.getX())) {
-            m2 = BigDecimal.valueOf(Double.MAX_VALUE);
+            m2 = new BigDecimal(Double.MAX_VALUE);
         } else {
             m2 = p3.getY().subtract(p2.getY()).divide(p3.getX().subtract(p2.getX()), MathContext.DECIMAL32);
         }
@@ -89,15 +89,15 @@ public class Geometry {
     }
 
     private BigDecimal distanceBetweenPoints(Point a, Point b) {
-        return BigDecimal.valueOf(Math.sqrt(
+        return new BigDecimal(Math.sqrt(
                 Math.pow(a.getX().subtract(b.getX()).doubleValue(), 2)
                     + Math.pow(a.getY().subtract(b.getY()).doubleValue(), 2)
             ));
     }
 
     public Point getCartesianCoordinates(BigDecimal angle, BigDecimal radius) {
-        BigDecimal x = BigDecimal.valueOf(Math.cos(Math.toRadians(FULL_ROTATION_DEGREES.subtract(angle).doubleValue())) * radius.doubleValue());
-        BigDecimal y = BigDecimal.valueOf(Math.sin(Math.toRadians(FULL_ROTATION_DEGREES.subtract(angle).doubleValue())) * radius.doubleValue());
+        BigDecimal x = new BigDecimal(Math.cos(Math.toRadians(FULL_ROTATION_DEGREES.subtract(angle).doubleValue())) * radius.doubleValue());
+        BigDecimal y = new BigDecimal(Math.sin(Math.toRadians(FULL_ROTATION_DEGREES.subtract(angle).doubleValue())) * radius.doubleValue());
 
         return new Point(x, y);
     }

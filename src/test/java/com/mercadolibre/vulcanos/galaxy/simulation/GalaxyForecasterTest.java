@@ -14,9 +14,9 @@ import static org.junit.Assert.assertEquals;
 public class GalaxyForecasterTest {
     private static final Integer DECIMAL_PRECISION = 2;
 
-    private final static Planet FERENGI = new Planet("ferengi", new Velocity(BigDecimal.valueOf(1), Velocity.Direction.CLOCKLWISE), BigDecimal.valueOf(500));
-    private final static Planet BETASOIDE = new Planet("betasoide", new Velocity(BigDecimal.valueOf(3), Velocity.Direction.CLOCKLWISE), BigDecimal.valueOf(2000));
-    private final static Planet VULCANO = new Planet("vulcano", new Velocity(BigDecimal.valueOf(5), Velocity.Direction.COUNTER_CLOCKLWISE), BigDecimal.valueOf(1000));
+    private final static Planet FERENGI = new Planet("ferengi", new Velocity(new BigDecimal(1), Velocity.Direction.CLOCKLWISE), new BigDecimal(500));
+    private final static Planet BETASOIDE = new Planet("betasoide", new Velocity(new BigDecimal(3), Velocity.Direction.CLOCKLWISE), new BigDecimal(2000));
+    private final static Planet VULCANO = new Planet("vulcano", new Velocity(new BigDecimal(5), Velocity.Direction.COUNTER_CLOCKLWISE), new BigDecimal(1000));
 
     @Test
     public void testForecastShouldBeDroughtWhenPlanetsAndTheSunAreAligned() {
@@ -29,15 +29,15 @@ public class GalaxyForecasterTest {
 
         assertEquals(Forecast.DROUGHT, galaxyForecaster.getForecast(galaxy));
 
-        galaxy.getPlanetPositionA().setPosition(BigDecimal.valueOf(30));
-        galaxy.getPlanetPositionB().setPosition(BigDecimal.valueOf(30));
-        galaxy.getPlanetPositionC().setPosition(BigDecimal.valueOf(210));
+        galaxy.getPlanetPositionA().setPosition(new BigDecimal(30));
+        galaxy.getPlanetPositionB().setPosition(new BigDecimal(30));
+        galaxy.getPlanetPositionC().setPosition(new BigDecimal(210));
 
         assertEquals(Forecast.DROUGHT, galaxyForecaster.getForecast(galaxy));
 
-        galaxy.getPlanetPositionA().setPosition(BigDecimal.valueOf(270));
-        galaxy.getPlanetPositionB().setPosition(BigDecimal.valueOf(90));
-        galaxy.getPlanetPositionC().setPosition(BigDecimal.valueOf(270));
+        galaxy.getPlanetPositionA().setPosition(new BigDecimal(270));
+        galaxy.getPlanetPositionB().setPosition(new BigDecimal(90));
+        galaxy.getPlanetPositionC().setPosition(new BigDecimal(270));
 
         assertEquals(Forecast.DROUGHT, galaxyForecaster.getForecast(galaxy));
     }
@@ -48,16 +48,16 @@ public class GalaxyForecasterTest {
         Galaxy galaxy = new Galaxy(BETASOIDE, FERENGI, VULCANO);
 
         // testing day after it starts raining
-        galaxy.getPlanetPositionA().setPosition(BigDecimal.valueOf(66));
-        galaxy.getPlanetPositionB().setPosition(BigDecimal.valueOf(22));
-        galaxy.getPlanetPositionC().setPosition(BigDecimal.valueOf(250));
+        galaxy.getPlanetPositionA().setPosition(new BigDecimal(66));
+        galaxy.getPlanetPositionB().setPosition(new BigDecimal(22));
+        galaxy.getPlanetPositionC().setPosition(new BigDecimal(250));
 
         assertEquals(Forecast.NORMAL, galaxyForecaster.getForecast(galaxy));
 
         // simulate one day movement
-        galaxy.getPlanetPositionA().setPosition(BigDecimal.valueOf(69));
-        galaxy.getPlanetPositionB().setPosition(BigDecimal.valueOf(23));
-        galaxy.getPlanetPositionC().setPosition(BigDecimal.valueOf(245));
+        galaxy.getPlanetPositionA().setPosition(new BigDecimal(69));
+        galaxy.getPlanetPositionB().setPosition(new BigDecimal(23));
+        galaxy.getPlanetPositionC().setPosition(new BigDecimal(245));
 
         assertEquals(Forecast.RAIN, galaxyForecaster.getForecast(galaxy));
     }

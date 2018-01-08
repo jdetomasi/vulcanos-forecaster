@@ -18,23 +18,23 @@ public class Beans {
     @Bean
     public Planet ferengi() {
         Velocity velocity = new Velocity(BigDecimal.ONE, Velocity.Direction.CLOCKLWISE);
-        BigDecimal distanceInKm = BigDecimal.valueOf(500);
+        BigDecimal distanceInKm = new BigDecimal(500);
 
         return new Planet("Ferengi", velocity, distanceInKm);
     }
 
     @Bean
     public Planet betasoide() {
-        Velocity velocity = new Velocity(BigDecimal.valueOf(3), Velocity.Direction.CLOCKLWISE);
-        BigDecimal distanceInKm = BigDecimal.valueOf(2000);
+        Velocity velocity = new Velocity(new BigDecimal(3), Velocity.Direction.CLOCKLWISE);
+        BigDecimal distanceInKm = new BigDecimal(2000);
 
         return new Planet("Betasoide", velocity, distanceInKm);
     }
 
     @Bean
     public Planet vulcano() {
-        Velocity velocity = new Velocity(BigDecimal.valueOf(5), Velocity.Direction.COUNTER_CLOCKLWISE);
-        BigDecimal distanceInKm = BigDecimal.valueOf(1000);
+        Velocity velocity = new Velocity(new BigDecimal(5), Velocity.Direction.COUNTER_CLOCKLWISE);
+        BigDecimal distanceInKm = new BigDecimal(1000);
 
         return new Planet("Vulcano", velocity, distanceInKm);
     }
