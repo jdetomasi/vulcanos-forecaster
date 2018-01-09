@@ -80,19 +80,34 @@ public class GeometryTest {
     @Test
     public void testCoordinateConversionIsCorrect() {
         assertEquals(
-                new Point(BigDecimal.ZERO, BigDecimal.ONE),
+                new Point(BigDecimal.ZERO, new BigDecimal(2000)),
                 geometry.roundPointCoordinates(
-                        geometry.getCartesianCoordinates(new BigDecimal(270), BigDecimal.ONE)));
+                        geometry.getCartesianCoordinates(new BigDecimal(270), new BigDecimal(2000))));
 
         assertEquals(
-                new Point(new BigDecimal(12), new BigDecimal(-5)),
+                new Point(new BigDecimal(500), BigDecimal.ZERO),
                 geometry.roundPointCoordinates(
-                        geometry.getCartesianCoordinates(new BigDecimal("22.6"), new BigDecimal(13))));
+                        geometry.getCartesianCoordinates(BigDecimal.ZERO, new BigDecimal(500))));
 
         assertEquals(
-                new Point(new BigDecimal("2.57"), new BigDecimal("-1.55")),
+                new Point(new BigDecimal("353.55"), new BigDecimal("-353.55")),
                 geometry.roundPointCoordinates(
-                        geometry.getCartesianCoordinates(new BigDecimal(31), new BigDecimal(3))));
+                        geometry.getCartesianCoordinates(new BigDecimal(45), new BigDecimal(500))));
+
+        assertEquals(
+                new Point(new BigDecimal("-415.82"), new BigDecimal("-1956.30")),
+                geometry.roundPointCoordinates(
+                        geometry.getCartesianCoordinates(new BigDecimal(102), new BigDecimal(2000))));
+
+        assertEquals(
+                new Point(new BigDecimal("-1989.04"), new BigDecimal("209.06")),
+                geometry.roundPointCoordinates(
+                        geometry.getCartesianCoordinates(new BigDecimal(186), new BigDecimal(2000))));
+
+        assertEquals(
+                new Point(new BigDecimal("996.19"), new BigDecimal("87.16")),
+                geometry.roundPointCoordinates(
+                        geometry.getCartesianCoordinates(new BigDecimal(355), new BigDecimal(1000))));
     }
 
     @Test
