@@ -31,7 +31,7 @@ public class ForecastController {
         if (forecastInformationRepository.exists(dia)) {
             return forecastInformationRepository.findOne(dia);
         } else {
-            return new ResponseEntity<>(new ErrorResponse("Pronóstico no encontrado para el día #" + dia), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new ErrorResponse("Pronóstico no encontrado para el día #" + dia), HttpStatus.NOT_FOUND);
         }
     }
 
