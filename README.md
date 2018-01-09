@@ -32,11 +32,11 @@ The load operation will response with son information about the loaded forecasts
     "Normal periods": "82"
 }
 ```
-
+{replace-with-service-host}
 ### Loading initial forecast data
 To query for an specific day forecast, make an HTTP **GET** to the following url:
 
-https://{replace-with-service-host}/clima?day=<day>
+https://{replace-with-service-host}/clima?day={day}
 
 For example:
 
