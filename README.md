@@ -15,7 +15,7 @@ After compiling the code the can be excecuted using the following command:
 ### Loading initial forecast data
 To manually load forecast predictions, make an HTTP **POST** to the following url:
 
-https://<service-host>/forecast/load
+https://{replace-with-service-host}/forecast/load
 
 For example:
 
@@ -36,7 +36,7 @@ The load operation will response with son information about the loaded forecasts
 ### Loading initial forecast data
 To query for an specific day forecast, make an HTTP **GET** to the following url:
 
-https://<service-host>/clima?day=<day>
+https://{replace-with-service-host}/clima?day=<day>
 
 For example:
 
